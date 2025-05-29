@@ -1,0 +1,28 @@
+---
+// src/components/WCAGBadge.astro
+const { level = "A" } = Astro.props;
+
+const levelColors = {
+  A: "bg-blue-600 text-white",
+  AA: "bg-purple-600 text-white",
+  AAA: "bg-green-600 text-white"
+};
+
+const levelText = {
+  A: "Nivel A",
+  AA: "Nivel AA",
+  AAA: "Nivel AAA"
+};
+---
+<span 
+  class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${levelColors[level]}`}
+  aria-label={`Conformidad WCAG ${levelText[level]}`}
+>
+  WCAG {level}
+  {level === "AA" && (
+    <span class="ml-1" aria-hidden="true">★</span>
+  )}
+  {level === "AAA" && (
+    <span class="ml-1" aria-hidden="true">★★</span>
+  )}
+</span>

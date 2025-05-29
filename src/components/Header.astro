@@ -1,0 +1,37 @@
+---
+// src/components/Header.astro
+const currentPage = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", text: "Inicio" },
+  { href: "/pautas/perceptible", text: "Perceptible" },
+  { href: "/pautas/operable", text: "Operable" },
+  { href: "/pautas/comprensible", text: "Comprensible" },
+  { href: "/pautas/robusto", text: "Robusto" },
+];
+---
+<header class="bg-indigo-700 text-white dark:bg-indigo-900">
+  <div class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold hover:underline focus:underline">
+        Accesibilidad For Dummies
+      </a>
+      
+      <nav aria-label="Navegación principal">
+        <ul class="flex gap-6">
+          {navItems.map(item => (
+            <li key={item.href}>
+              <a 
+                href={item.href} 
+                class={`hover:underline focus:underline ${currentPage === item.href ? 'font-bold underline' : ''}`}
+                aria-current={currentPage === item.href ? 'page' : undefined}
+              >
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

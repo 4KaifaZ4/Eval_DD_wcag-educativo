@@ -1,25 +1,87 @@
 ---
-import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import WCAGBadge from '../components/WCAGBadge.astro';
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+const pageTitle = "Guía de Accesibilidad Web WCAG 2.0";
+const pageDescription = "Aprende los principios de accesibilidad web con ejemplos prácticos y claros.";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+<MainLayout title={pageTitle} description={pageDescription}>
+  <article class="container mx-auto px-4 py-12 max-w-4xl">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">{pageTitle}</h1>
+      <p class="text-xl mb-6 max-w-2xl mx-auto">{pageDescription}</p>
+      <WCAGBadge level="AA" class="mx-auto" />
+    </header>
+    
+    <section aria-labelledby="principios" class="mb-16">
+      <h2 id="principios" class="text-3xl font-bold mb-8 text-center">Los 4 Principios de WCAG</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Perceptible -->
+        <a 
+          href="/pautas/perceptible" 
+          class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600 dark:text-indigo-400">1. Perceptible</h3>
+          <p class="text-gray-600 dark:text-gray-300">La información debe ser presentada de forma que los usuarios puedan percibirla.</p>
+          <p class="mt-3 text-sm font-medium text-indigo-600 dark:text-indigo-400">Ver pautas →</p>
+        </a>
+        
+        <!-- Operable -->
+        <a 
+          href="/pautas/operable" 
+          class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600 dark:text-indigo-400">2. Operable</h3>
+          <p class="text-gray-600 dark:text-gray-300">Los componentes de interfaz deben ser manejables por todos los usuarios.</p>
+          <p class="mt-3 text-sm font-medium text-indigo-600 dark:text-indigo-400">Ver pautas →</p>
+        </a>
+        
+        <!-- Comprensible -->
+        <a 
+          href="/pautas/comprensible" 
+          class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600 dark:text-indigo-400">3. Comprensible</h3>
+          <p class="text-gray-600 dark:text-gray-300">La información y el uso de la interfaz deben ser comprensibles.</p>
+          <p class="mt-3 text-sm font-medium text-indigo-600 dark:text-indigo-400">Ver pautas →</p>
+        </a>
+        
+        <!-- Robusto -->
+        <a 
+          href="/pautas/robusto" 
+          class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-semibold mb-3 text-indigo-600 dark:text-indigo-400">4. Robusto</h3>
+          <p class="text-gray-600 dark:text-gray-300">El contenido debe ser interpretable por diversas tecnologías.</p>
+          <p class="mt-3 text-sm font-medium text-indigo-600 dark:text-indigo-400">Ver pautas →</p>
+        </a>
+      </div>
+    </section>
+    
+    <section aria-labelledby="recursos" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+      <h2 id="recursos" class="text-2xl font-bold mb-6">Recursos Adicionales</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Herramientas de Validación</h3>
+          <ul class="space-y-2">
+            <li><a href="https://wave.webaim.org/" class="hover:underline focus:underline">WAVE Web Accessibility Tool</a></li>
+            <li><a href="https://www.deque.com/axe/" class="hover:underline focus:underline">axe DevTools</a></li>
+            <li><a href="https://validator.w3.org/" class="hover:underline focus:underline">W3C Validator</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Documentación Oficial</h3>
+          <ul class="space-y-2">
+            <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" class="hover:underline focus:underline">WCAG 2.1 en W3C</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" class="hover:underline focus:underline">Referencia Rápida WCAG</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </article>
+</MainLayout>

@@ -1,0 +1,56 @@
+---
+// src/pages/pautas/perceptible.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import WCAGBadge from '../../components/WCAGBadge.astro';
+
+const pageTitle = "Pauta 1: Perceptible";
+const pageDescription = "Información y componentes de interfaz de usuario deben ser presentados a los usuarios de modo que ellos puedan percibirlos.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <article class="container mx-auto px-4 py-12 max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">{pageTitle}</h1>
+      <WCAGBadge level="AA" class="mb-4" />
+      <p class="text-lg">{pageDescription}</p>
+    </header>
+    
+    <section aria-labelledby="text-alternatives" class="mb-12">
+      <h2 id="text-alternatives" class="text-2xl font-semibold mb-6">
+        1.1 Alternativas de Texto
+      </h2>
+      
+      <p class="mb-6">Proporcione alternativas de texto para cualquier contenido no textual para que pueda cambiarse a otros formatos que las personas necesiten, como caracteres grandes, braille, lenguaje de señas, simbolos o lenguaje más simple.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 my-6">
+        <!-- Ejemplo MALO -->
+        <div class="border border-red-300 dark:border-red-700 p-4 rounded-lg">
+          <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Ejemplo incorrecto</h3>
+          <img src="/decorative.jpg" class="w-full" />
+          <p class="mt-2 text-sm">Imagen decorativa sin alt=""</p>
+          <p class="mt-2 text-xs text-red-600 dark:text-red-400">Problema: Imagen sin atributo alt, lo que puede causar que lectores de pantalla lean la ruta del archivo.</p>
+        </div>
+        
+        <!-- Ejemplo BUENO -->
+        <div class="border border-green-300 dark:border-green-700 p-4 rounded-lg">
+          <h3 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Ejemplo correcto</h3>
+          <img 
+            src="/informative.jpg" 
+            alt="Diagrama de flujo WCAG 2.1 mostrando los 4 principios: Perceptible, Operable, Comprensible y Robusto" 
+            class="w-full"
+          />
+          <p class="mt-2 text-sm">Imagen informativa con alt descriptivo</p>
+          <p class="mt-2 text-xs text-green-600 dark:text-green-400">Solución: Atributo alt describe el contenido y propósito de la imagen.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section aria-labelledby="time-based-media" class="mb-12">
+      <h2 id="time-based-media" class="text-2xl font-semibold mb-6">
+        1.2 Medios tempodependientes
+      </h2>
+      
+      <!-- Más contenido aquí -->
+    </section>
+  </article>
+</MainLayout>

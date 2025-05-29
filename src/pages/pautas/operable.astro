@@ -1,0 +1,69 @@
+---
+// src/pages/pautas/operable.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import WCAGBadge from '../../components/WCAGBadge.astro';
+
+const pageTitle = "Pauta 2: Operable";
+const pageDescription = "Los componentes de la interfaz de usuario y la navegación deben ser operables.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <article class="container mx-auto px-4 py-12 max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">{pageTitle}</h1>
+      <WCAGBadge level="AA" class="mb-4" />
+      <p class="text-lg">{pageDescription}</p>
+    </header>
+    
+    <section aria-labelledby="keyboard" class="mb-12">
+      <h2 id="keyboard" class="text-2xl font-semibold mb-6">
+        2.1 Accesible por Teclado
+      </h2>
+      
+      <p class="mb-6">Toda la funcionalidad debe ser operable a través de una interfaz de teclado sin requerir tiempos específicos para las pulsaciones individuales de teclas.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 my-6">
+        <!-- Ejemplo MALO -->
+        <div class="border border-red-300 dark:border-red-700 p-4 rounded-lg">
+          <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Ejemplo incorrecto</h3>
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <div class="custom-dropdown" tabindex="0">
+              Menú desplegable (solo funciona con mouse)
+            </div>
+          </div>
+          <p class="mt-2 text-sm">Menú que no se abre con teclado</p>
+          <p class="mt-2 text-xs text-red-600 dark:text-red-400">Problema: Usuarios de teclado no pueden acceder al menú.</p>
+        </div>
+        
+        <!-- Ejemplo BUENO -->
+        <div class="border border-green-300 dark:border-green-700 p-4 rounded-lg">
+          <h3 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Ejemplo correcto</h3>
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <div 
+              class="custom-dropdown" 
+              tabindex="0" 
+              role="button" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+            >
+              Menú accesible
+              <ul class="hidden mt-2" role="menu">
+                <li tabindex="0" role="menuitem">Opción 1</li>
+                <li tabindex="0" role="menuitem">Opción 2</li>
+              </ul>
+            </div>
+          </div>
+          <p class="mt-2 text-sm">Menú con soporte completo para teclado</p>
+          <p class="mt-2 text-xs text-green-600 dark:text-green-400">Solución: Implementar eventos keydown y ARIA attributes.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section aria-labelledby="timing" class="mb-12">
+      <h2 id="timing" class="text-2xl font-semibold mb-6">
+        2.2 Tiempo Ajustable
+      </h2>
+      <p>Proporcionar a los usuarios tiempo suficiente para leer y usar el contenido.</p>
+    </section>
+  </article>
+</MainLayout>

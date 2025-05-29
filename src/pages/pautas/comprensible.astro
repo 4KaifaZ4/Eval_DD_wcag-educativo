@@ -1,0 +1,55 @@
+---
+// src/pages/pautas/comprensible.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import WCAGBadge from '../../components/WCAGBadge.astro';
+
+const pageTitle = "Pauta 3: Comprensible";
+const pageDescription = "La información y el manejo de la interfaz de usuario deben ser comprensibles.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <article class="container mx-auto px-4 py-12 max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">{pageTitle}</h1>
+      <WCAGBadge level="AA" class="mb-4" />
+      <p class="text-lg">{pageDescription}</p>
+    </header>
+    
+    <section aria-labelledby="readable" class="mb-12">
+      <h2 id="readable" class="text-2xl font-semibold mb-6">
+        3.1 Legible
+      </h2>
+      
+      <p class="mb-6">Hacer que el contenido textual sea legible y comprensible.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 my-6">
+        <!-- Ejemplo MALO -->
+        <div class="border border-red-300 dark:border-red-700 p-4 rounded-lg">
+          <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Ejemplo incorrecto</h3>
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <p class="text-sm italic">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt."</p>
+          </div>
+          <p class="mt-2 text-sm">Texto en latín sin significado</p>
+          <p class="mt-2 text-xs text-red-600 dark:text-red-400">Problema: Contenido no comprensible para usuarios reales.</p>
+        </div>
+        
+        <!-- Ejemplo BUENO -->
+        <div class="border border-green-300 dark:border-green-700 p-4 rounded-lg">
+          <h3 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Ejemplo correcto</h3>
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <p class="text-sm">"Para navegar por el menú, use las teclas Tab y Shift+Tab. Presione Enter para seleccionar una opción."</p>
+          </div>
+          <p class="mt-2 text-sm">Instrucciones claras en lenguaje simple</p>
+          <p class="mt-2 text-xs text-green-600 dark:text-green-400">Solución: Contenido comprensible con lenguaje claro y simple.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section aria-labelledby="predictable" class="mb-12">
+      <h2 id="predictable" class="text-2xl font-semibold mb-6">
+        3.2 Predecible
+      </h2>
+      <p>Hacer que las páginas web aparezcan y operen de manera predecible.</p>
+    </section>
+  </article>
+</MainLayout>

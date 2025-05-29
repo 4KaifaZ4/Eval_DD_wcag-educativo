@@ -1,0 +1,60 @@
+---
+// src/pages/pautas/robusto.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import WCAGBadge from '../../components/WCAGBadge.astro';
+
+const pageTitle = "Pauta 4: Robusto";
+const pageDescription = "El contenido debe ser suficientemente robusto como para ser interpretado de forma fiable por una amplia variedad de agentes de usuario, incluyendo tecnologías asistivas.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <article class="container mx-auto px-4 py-12 max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">{pageTitle}</h1>
+      <WCAGBadge level="AA" class="mb-4" />
+      <p class="text-lg">{pageDescription}</p>
+    </header>
+    
+    <section aria-labelledby="compatible" class="mb-12">
+      <h2 id="compatible" class="text-2xl font-semibold mb-6">
+        4.1 Compatible
+      </h2>
+      
+      <p class="mb-6">Maximizar la compatibilidad con las aplicaciones de usuario actuales y futuras, incluyendo tecnologías asistivas.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 my-6">
+        <!-- Ejemplo MALO -->
+        <div class="border border-red-300 dark:border-red-700 p-4 rounded-lg">
+          <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Ejemplo incorrecto</h3>
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <div id="mi-elemento" role="button" tabindex="0">Haz clic</div>
+          </div>
+          <p class="mt-2 text-sm">Elemento con role="button" pero sin eventos de teclado</p>
+          <p class="mt-2 text-xs text-red-600 dark:text-red-400">Problema: Los usuarios de teclado no pueden interactuar con este "botón".</p>
+        </div>
+        
+        <!-- Ejemplo BUENO -->
+        <div class="border border-green-300 dark:border-green-700 p-4 rounded-lg">
+          <h3 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Ejemplo correcto</h3>
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <button 
+              id="mi-boton" 
+              class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Haz clic
+            </button>
+          </div>
+          <p class="mt-2 text-sm">Botón nativo con estilos personalizados</p>
+          <p class="mt-2 text-xs text-green-600 dark:text-green-400">Solución: Usar elementos semánticos HTML5 que tienen comportamientos accesibles incorporados.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section aria-labelledby="parsing" class="mb-12">
+      <h2 id="parsing" class="text-2xl font-semibold mb-6">
+        4.1.1 Procesamiento
+      </h2>
+      <p>En contenido implementado usando lenguajes de marcado, los elementos tienen etiquetas de apertura y cierre completas, están anidados según sus especificaciones, no contienen atributos duplicados y cualquier ID es único.</p>
+    </section>
+  </article>
+</MainLayout>
