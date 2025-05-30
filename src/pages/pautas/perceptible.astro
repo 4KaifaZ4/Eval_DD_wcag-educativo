@@ -3,54 +3,267 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import WCAGBadge from '../../components/WCAGBadge.astro';
 
-const pageTitle = "Pauta 1: Perceptible";
-const pageDescription = "Información y componentes de interfaz de usuario deben ser presentados a los usuarios de modo que ellos puedan percibirlos.";
+const pageTitle = "Pauta 1: Perceptible - Principios de Accesibilidad WCAG";
+const pageDescription = "Garantiza que la información y componentes de interfaz sean presentados de forma que los usuarios puedan percibirlos mediante múltiples sentidos.";
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
   <article class="container mx-auto px-4 py-12 max-w-4xl">
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold mb-2">{pageTitle}</h1>
-      <WCAGBadge level="AA" class="mb-4" />
-      <p class="text-lg">{pageDescription}</p>
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold mb-4 text-indigo-700 dark:text-indigo-400">{pageTitle}</h1>
+      <WCAGBadge level="AA" class="mx-auto mb-6" />
+      <p class="text-xl max-w-2xl mx-auto leading-relaxed">{pageDescription}</p>
     </header>
     
-    <section aria-labelledby="text-alternatives" class="mb-12">
-      <h2 id="text-alternatives" class="text-2xl font-semibold mb-6">
+    <!-- Sección 1.1 Alternativas de Texto -->
+    <section aria-labelledby="text-alternatives" class="mb-16 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+      <h2 id="text-alternatives" class="text-3xl font-bold mb-6 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
         1.1 Alternativas de Texto
       </h2>
       
-      <p class="mb-6">Proporcione alternativas de texto para cualquier contenido no textual para que pueda cambiarse a otros formatos que las personas necesiten, como caracteres grandes, braille, lenguaje de señas, simbolos o lenguaje más simple.</p>
+      <p class="mb-6 text-lg">Proporciona alternativas textuales para contenido no textual.</p>
       
-      <div class="grid md:grid-cols-2 gap-6 my-6">
+      <div class="grid md:grid-cols-2 gap-8 my-8">
         <!-- Ejemplo MALO -->
-        <div class="border border-red-300 dark:border-red-700 p-4 rounded-lg">
-          <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Ejemplo incorrecto</h3>
-          <img src="/decorative.jpg" class="w-full" />
-          <p class="mt-2 text-sm">Imagen decorativa sin alt=""</p>
-          <p class="mt-2 text-xs text-red-600 dark:text-red-400">Problema: Imagen sin atributo alt, lo que puede causar que lectores de pantalla lean la ruta del archivo.</p>
+        <div class="border-2 border-red-400 dark:border-red-600 p-6 rounded-lg bg-red-50 dark:bg-gray-900">
+          <h3 class="font-bold text-xl text-red-700 dark:text-red-400 mb-4 flex items-center">
+            <span class="bg-red-100 dark:bg-red-900 p-2 rounded-full mr-3">❌</span>
+            Contenido no textual sin alternativas
+          </h3>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+            <div class="code-block bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-x-auto">
+              <pre><code>&lt;img src="grafico-estadistico.jpg" /&gt;</code></pre>
+            </div>
+            <p class="mt-3 text-sm text-red-600 dark:text-red-400">
+              <strong>Problema:</strong> Gráfico estadístico sin descripción, imposible de entender para usuarios ciegos.
+            </p>
+          </div>
         </div>
         
         <!-- Ejemplo BUENO -->
-        <div class="border border-green-300 dark:border-green-700 p-4 rounded-lg">
-          <h3 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Ejemplo correcto</h3>
-          <img 
-            src="/informative.jpg" 
-            alt="Diagrama de flujo WCAG 2.1 mostrando los 4 principios: Perceptible, Operable, Comprensible y Robusto" 
-            class="w-full"
-          />
-          <p class="mt-2 text-sm">Imagen informativa con alt descriptivo</p>
-          <p class="mt-2 text-xs text-green-600 dark:text-green-400">Solución: Atributo alt describe el contenido y propósito de la imagen.</p>
+        <div class="border-2 border-green-400 dark:border-green-600 p-6 rounded-lg bg-green-50 dark:bg-gray-900">
+          <h3 class="font-bold text-xl text-green-700 dark:text-green-400 mb-4 flex items-center">
+            <span class="bg-green-100 dark:bg-green-900 p-2 rounded-full mr-3">✅</span>
+            Alternativas adecuadas
+          </h3>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+            <div class="code-block bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-x-auto">
+              <pre><code>&lt;img 
+  src="grafico-estadistico.jpg" 
+  alt="Gráfico de barras mostrando crecimiento de usuarios: 2018 (1200), 2019 (2500), 2020 (4000)"
+  longdesc="estadisticas-detalladas.html"
+/&gt;</code></pre>
+            </div>
+            <p class="mt-3 text-sm text-green-600 dark:text-green-400">
+              <strong>Solución:</strong> Alt descriptivo + enlace a descripción detallada.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
+        <h3 class="text-xl font-semibold mb-4 text-blue-700 dark:text-blue-400">📌 Casos prácticos:</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <h4 class="font-medium mb-2">Iconos</h4>
+            <div class="code-block bg-gray-200 dark:bg-gray-700 p-3 rounded text-sm">
+              <code>&lt;span class="icon-search" aria-label="Buscar"&gt;&lt;/span&gt;</code>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-medium mb-2">SVG decorativo</h4>
+            <div class="code-block bg-gray-200 dark:bg-gray-700 p-3 rounded text-sm">
+              <code>&lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;</code>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-medium mb-2">Imágenes complejas</h4>
+            <div class="code-block bg-gray-200 dark:bg-gray-700 p-3 rounded text-sm">
+              <code>&lt;figure aria-labelledby="fig1-desc"&gt;<br>&nbsp;&nbsp;&lt;img src="diagrama.jpg" alt=""&gt;<br>&nbsp;&nbsp;&lt;figcaption id="fig1-desc"&gt;...&lt;/figcaption&gt;<br>&lt;/figure&gt;</code>
+            </div>
+          </div>
         </div>
       </div>
     </section>
     
-    <section aria-labelledby="time-based-media" class="mb-12">
-      <h2 id="time-based-media" class="text-2xl font-semibold mb-6">
-        1.2 Medios tempodependientes
+    <!-- Sección 1.2 Medios tempodependientes -->
+    <section aria-labelledby="time-based-media" class="mb-16 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+      <h2 id="time-based-media" class="text-3xl font-bold mb-6 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
+        1.2 Medios Tempodependientes
       </h2>
       
-      <!-- Más contenido aquí -->
+      <p class="mb-6 text-lg">Proporciona alternativas para audio y video.</p>
+      
+      <div class="grid md:grid-cols-2 gap-8 my-8">
+        <div class="border-2 border-yellow-400 dark:border-yellow-600 p-6 rounded-lg bg-yellow-50 dark:bg-gray-900">
+          <h3 class="font-bold text-xl text-yellow-700 dark:text-yellow-400 mb-4 flex items-center">
+            <span class="bg-yellow-100 dark:bg-yellow-900 p-2 rounded-full mr-3">🎥</span>
+            Ejemplo de video accesible
+          </h3>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+            <div class="code-block bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-x-auto">
+              <pre><code>&lt;video controls&gt;
+  &lt;source src="tutorial.mp4" type="video/mp4"&gt;
+  &lt;track 
+    kind="subtitles" 
+    src="tutorial-es.vtt" 
+    srclang="es" 
+    label="Español"
+  &gt;
+  &lt;track 
+    kind="descriptions" 
+    src="tutorial-audio-desc.vtt" 
+    srclang="es"
+  &gt;
+  &lt;a href="transcripcion.html"&gt;Transcripción&lt;/a&gt;
+&lt;/video&gt;</code></pre>
+            </div>
+            <p class="mt-3 text-sm">Incluye: subtítulos, audiodescripción y transcripción.</p>
+          </div>
+        </div>
+        
+        <div class="border-2 border-purple-400 dark:border-purple-600 p-6 rounded-lg bg-purple-50 dark:bg-gray-900">
+          <h3 class="font-bold text-xl text-purple-700 dark:text-purple-400 mb-4 flex items-center">
+            <span class="bg-purple-100 dark:bg-purple-900 p-2 rounded-full mr-3">🎧</span>
+            Ejemplo de audio accesible
+          </h3>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+            <div class="code-block bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-x-auto">
+              <pre><code>&lt;audio controls&gt;
+  &lt;source src="podcast.mp3" type="audio/mpeg"&gt;
+  &lt;a href="transcripcion-podcast.html"&gt;
+    Transcripción del podcast
+  &lt;/a&gt;
+&lt;/audio&gt;
+
+&lt;div hidden id="transcript"&gt;
+  &lt;h3&gt;Transcripción&lt;/h3&gt;
+  &lt;p&gt;[Contenido completo en texto]&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <p class="mt-3 text-sm">Incluye: transcripción accesible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 1.3 Adaptable -->
+    <section aria-labelledby="adaptable" class="mb-16 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+      <h2 id="adaptable" class="text-3xl font-bold mb-6 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
+        1.3 Adaptable
+      </h2>
+      
+      <p class="mb-6 text-lg">Crea contenido que pueda presentarse de diferentes formas sin perder información.</p>
+      
+      <div class="grid md:grid-cols-2 gap-8 my-8">
+        <div class="border-2 border-red-400 dark:border-red-600 p-6 rounded-lg bg-red-50 dark:bg-gray-900">
+          <h3 class="font-bold text-xl text-red-700 dark:text-red-400 mb-4 flex items-center">
+            <span class="bg-red-100 dark:bg-red-900 p-2 rounded-full mr-3">❌</span>
+            Contenido no adaptable
+          </h3>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+            <div class="code-block bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-x-auto">
+              <pre><code>&lt;div style="width: 500px; height: 300px;"&gt;
+  Contenido con tamaño fijo
+&lt;/div&gt;</code></pre>
+            </div>
+            <p class="mt-3 text-sm text-red-600 dark:text-red-400">
+              <strong>Problema:</strong> No se adapta a diferentes tamaños de pantalla.
+            </p>
+          </div>
+        </div>
+        
+        <div class="border-2 border-green-400 dark:border-green-600 p-6 rounded-lg bg-green-50 dark:bg-gray-900">
+          <h3 class="font-bold text-xl text-green-700 dark:text-green-400 mb-4 flex items-center">
+            <span class="bg-green-100 dark:bg-green-900 p-2 rounded-full mr-3">✅</span>
+            Contenido adaptable
+          </h3>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+            <div class="code-block bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-x-auto">
+              <pre><code>&lt;div class="max-w-full"&gt;
+  &lt;table role="grid" aria-label="Datos estadísticos"&gt;
+    &lt;caption&gt;Ventas por región&lt;/caption&gt;
+    &lt;!-- Contenido semántico --&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <p class="mt-3 text-sm text-green-600 dark:text-green-400">
+              <strong>Solución:</strong> Diseño flexible + estructura semántica.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 1.4 Distinguible -->
+    <section aria-labelledby="distinguishable" class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+      <h2 id="distinguishable" class="text-3xl font-bold mb-6 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
+        1.4 Distinguible
+      </h2>
+      
+      <p class="mb-6 text-lg">Facilita a los usuarios ver y oír el contenido.</p>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-lg border border-indigo-200 dark:border-indigo-800">
+          <h3 class="text-xl font-semibold mb-4 text-indigo-700 dark:text-indigo-400">🎨 Contraste de color</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-16 h-16 bg-black rounded-md mr-4 flex items-center justify-center">
+                <span class="text-white text-sm">AAA</span>
+              </div>
+              <div>
+                <p class="font-medium">Texto normal: 4.5:1</p>
+                <p class="text-sm">Ejemplo: #000000 sobre #FFFFFF</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-16 h-16 bg-indigo-700 rounded-md mr-4 flex items-center justify-center">
+                <span class="text-white text-sm">AA</span>
+              </div>
+              <div>
+                <p class="font-medium">Texto grande: 3:1</p>
+                <p class="text-sm">Ejemplo: #4F46E5 sobre #FFFFFF</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-800">
+          <h3 class="text-xl font-semibold mb-4 text-purple-700 dark:text-purple-400">🔊 Audio accesible</h3>
+          <ul class="space-y-3 pl-5 list-disc">
+            <li>Controles de volumen accesibles</li>
+            <li>Opción para detener/pausar sonidos</li>
+            <li>Sin audio automático que dure más de 3 segundos</li>
+            <li>Bajo ruido de fondo (al menos 20dB más bajo que el contenido principal)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border border-green-200 dark:border-green-800">
+        <h3 class="text-xl font-semibold mb-4 text-green-700 dark:text-green-400">📝 Ejemplo de texto accesible</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-medium mb-2">Incorrecto</h4>
+            <p class="text-gray-400 bg-gray-100 dark:bg-gray-700 p-3 rounded">
+              Haz clic <span class="text-blue-500 underline">aquí</span> para más información
+            </p>
+            <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+              Problema: Enlace no descriptivo fuera de contexto.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-medium mb-2">Correcto</h4>
+            <p class="bg-gray-100 dark:bg-gray-700 p-3 rounded">
+              <a href="informacion-detallada.html" class="text-blue-600 dark:text-blue-400 hover:underline">
+                Ver información detallada sobre accesibilidad
+              </a>
+            </p>
+            <p class="mt-2 text-sm text-green-600 dark:text-green-400">
+              Solución: Texto de enlace descriptivo por sí mismo.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   </article>
 </MainLayout>

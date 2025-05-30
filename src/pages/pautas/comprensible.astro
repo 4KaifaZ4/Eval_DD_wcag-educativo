@@ -4,52 +4,352 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import WCAGBadge from '../../components/WCAGBadge.astro';
 
 const pageTitle = "Pauta 3: Comprensible";
-const pageDescription = "La información y el manejo de la interfaz de usuario deben ser comprensibles.";
+const pageDescription = "Principios para hacer la información y operación de interfaces comprensibles para todos los usuarios, incluyendo personas con discapacidades cognitivas.";
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
   <article class="container mx-auto px-4 py-12 max-w-4xl">
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold mb-2">{pageTitle}</h1>
-      <WCAGBadge level="AA" class="mb-4" />
-      <p class="text-lg">{pageDescription}</p>
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold mb-4 text-indigo-700 dark:text-indigo-400">{pageTitle}</h1>
+      <WCAGBadge level="AA" class="mx-auto mb-6" />
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed">{pageDescription}</p>
+      
+      <!-- Video introductorio embebido -->
+      <div class="mt-8 aspect-w-16 aspect-h-9">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cKIJEJt1Snw?si=ydmSwHcC4UV9q9yY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      
+      <div class="mt-8 bg-indigo-50 dark:bg-gray-800 p-6 rounded-xl border border-indigo-100 dark:border-gray-700">
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-800 dark:text-indigo-300">¿Por qué es importante?</h2>
+        <ul class="grid md:grid-cols-2 gap-4 text-left">
+          <li class="flex items-start">
+            <span class="mr-2 mt-1 text-indigo-600 dark:text-indigo-400">✓</span>
+            <span>Mejora la experiencia para usuarios con discapacidades cognitivas</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 mt-1 text-indigo-600 dark:text-indigo-400">✓</span>
+            <span>Reduce la carga cognitiva para todos los usuarios</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 mt-1 text-indigo-600 dark:text-indigo-400">✓</span>
+            <span>Facilita la comprensión en situaciones de estrés o distracción</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2 mt-1 text-indigo-600 dark:text-indigo-400">✓</span>
+            <span>Mejora la usabilidad en dispositivos móviles</span>
+          </li>
+        </ul>
+      </div>
     </header>
-    
-    <section aria-labelledby="readable" class="mb-12">
-      <h2 id="readable" class="text-2xl font-semibold mb-6">
-        3.1 Legible
+
+    <!-- Sección 3.1 Legible con infografía -->
+    <section aria-labelledby="readable" class="mb-16">
+      <h2 id="readable" class="text-3xl font-bold mb-8 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
+        <span class="text-indigo-600 dark:text-indigo-400">3.1</span> Legible
       </h2>
       
-      <p class="mb-6">Hacer que el contenido textual sea legible y comprensible.</p>
+      <p class="text-lg mb-8">El contenido textual debe ser presentado de manera que los usuarios puedan leer y entender la información, por ejemplo:</p>
       
-      <div class="grid md:grid-cols-2 gap-6 my-6">
+      <!-- Infografía embebida -->
+      <div class="my-8">
+        <iframe 
+          src="https://www.leagueoflegends.com/es-es/how-to-play/" 
+          title="Ejemplo de Pagina legible" 
+          width="100%" 
+          height="500" 
+          frameborder="0"
+          class="rounded-lg shadow-md"
+        ></iframe>
+      </div>
+      
+      <!-- Ejemplos comparativos -->
+      <div class="grid md:grid-cols-2 gap-8 my-8">
         <!-- Ejemplo MALO -->
-        <div class="border border-red-300 dark:border-red-700 p-4 rounded-lg">
-          <h3 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Ejemplo incorrecto</h3>
-          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
-            <p class="text-sm italic">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt."</p>
+        <div class="border-2 border-red-300 dark:border-red-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-2">❌</span>
+            <h3 class="text-xl font-bold text-red-700 dark:text-red-400">Ejemplo problemático</h3>
           </div>
-          <p class="mt-2 text-sm">Texto en latín sin significado</p>
-          <p class="mt-2 text-xs text-red-600 dark:text-red-400">Problema: Contenido no comprensible para usuarios reales.</p>
+          
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-4">
+            <p class="text-sm italic font-mono">"Per our TOS §4.3.2, usr must acknldge all req'd disclosures prior to init'g tx."</p>
+          </div>
+          
+          <div class="space-y-2">
+            <h4 class="font-semibold">Problemas detectados:</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>Uso excesivo de abreviaturas y jerga técnica</li>
+              <li>Estructura de oración compleja</li>
+              <li>Falta de contexto claro</li>
+              <li>No cumple con el nivel de lectura recomendado (8° grado)</li>
+            </ul>
+          </div>
+          
+          <div class="mt-4 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+            <p class="text-xs text-red-600 dark:text-red-300">Impacto: Usuarios con discapacidades cognitivas, no nativos del idioma o con baja alfabetización no podrán comprender este mensaje.</p>
+          </div>
         </div>
         
         <!-- Ejemplo BUENO -->
-        <div class="border border-green-300 dark:border-green-700 p-4 rounded-lg">
-          <h3 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Ejemplo correcto</h3>
-          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded">
-            <p class="text-sm">"Para navegar por el menú, use las teclas Tab y Shift+Tab. Presione Enter para seleccionar una opción."</p>
+        <div class="border-2 border-green-300 dark:border-green-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-2">✅</span>
+            <h3 class="text-xl font-bold text-green-700 dark:text-green-400">Solución accesible</h3>
           </div>
-          <p class="mt-2 text-sm">Instrucciones claras en lenguaje simple</p>
-          <p class="mt-2 text-xs text-green-600 dark:text-green-400">Solución: Contenido comprensible con lenguaje claro y simple.</p>
+          
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-4">
+            <p class="text-sm">"De acuerdo con nuestros Términos de Servicio (sección 4.3.2), usted debe revisar y aceptar todas las condiciones antes de completar su transacción."</p>
+          </div>
+          
+          <div class="space-y-2">
+            <h4 class="font-semibold">Mejoras implementadas:</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>Lenguaje claro y directo</li>
+              <li>Abreviaturas explicadas</li>
+              <li>Estructura simple y lineal</li>
+              <li>Nivel de lectura apropiado</li>
+            </ul>
+          </div>
+          
+          <div class="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+            <p class="text-xs text-green-600 dark:text-green-300">Beneficio: Comprendido por el 95% de los usuarios, incluyendo aquellos con discapacidades cognitivas leves.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Video explicativo -->
+      <div class="aspect-w-16 aspect-h-9 my-8">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/m67d6q_oYHo?si=2ihoKpsG0KV-CbAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      
+      <!-- Recomendaciones adicionales -->
+      <div class="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-xl border border-blue-200 dark:border-blue-800 mt-8">
+        <h3 class="text-xl font-semibold mb-4 text-blue-800 dark:text-blue-200">Técnicas recomendadas:</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-medium mb-2 text-blue-700 dark:text-blue-300">Para texto legible:</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>Usar oraciones cortas (15-20 palabras)</li>
+              <li>Evitar jerga técnica o explicarla</li>
+              <li>Incluir glosarios para términos especializados</li>
+              <li>Mantener nivel de lectura ≤ 8° grado</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-medium mb-2 text-blue-700 dark:text-blue-300">Para ayudas visuales:</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>Incluir iconos junto a texto importante</li>
+              <li>Usar diagramas simples para conceptos complejos</li>
+              <li>Proveer alternativas textuales para imágenes informativas</li>
+              <li>Mantener consistencia en símbolos</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-    
-    <section aria-labelledby="predictable" class="mb-12">
-      <h2 id="predictable" class="text-2xl font-semibold mb-6">
-        3.2 Predecible
+
+    <!-- Sección 3.2 Predecible con video demostrativo -->
+    <section aria-labelledby="predictable" class="mb-16">
+      <h2 id="predictable" class="text-3xl font-bold mb-8 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
+        <span class="text-indigo-600 dark:text-indigo-400">3.2</span> Predecible
       </h2>
-      <p>Hacer que las páginas web aparezcan y operen de manera predecible.</p>
+      
+      <p class="text-lg mb-8">Las páginas web deben aparecer y operar de manera predecible para no confundir a los usuarios.</p>
+      
+      <!-- Video demostrativo -->
+      <div class="aspect-w-16 aspect-h-9 mb-8">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/t6o7xjgd_dE?si=tmzVt_rmUaRLNrhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      
+      <!-- Ejemplo interactivo -->
+      <div class="bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl border border-purple-200 dark:border-purple-800 mb-8">
+        <h3 class="text-xl font-semibold mb-4 text-purple-800 dark:text-purple-200">Prueba de predecibilidad:</h3>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <button id="unpredictable-btn" class="w-full px-4 py-3 bg-red-500 text-white rounded-lg mb-2 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition">
+              Botón Impredecible
+            </button>
+            <p class="text-sm text-gray-600 dark:text-gray-400">¿Qué acción crees que realizará?</p>
+          </div>
+          
+          <div>
+            <button class="w-full px-4 py-3 bg-green-600 text-white rounded-lg mb-2 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition">
+              Enviar Formulario
+            </button>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Acción clara por el texto descriptivo</p>
+          </div>
+        </div>
+        
+        <div id="unpredictable-result" class="mt-4 hidden p-3 bg-red-100 dark:bg-red-900/20 rounded-lg">
+          <p class="text-red-700 dark:text-red-300">¡Sorpresa! Este botón cerró tu sesión sin aviso. Los elementos interactivos deben tener comportamientos predecibles.</p>
+        </div>
+      </div>
+      
+      <!-- Checklist de predecibilidad -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead class="bg-gray-50 dark:bg-gray-700">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Elemento</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Patrón Predecible</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">Navegación</td>
+              <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Misma ubicación en todas las páginas</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">Enlaces</td>
+              <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Estilo consistente y descripción precisa</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">Formularios</td>
+              <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Flujo lógico con retroalimentación clara</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">Botones</td>
+              <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Acción clara por etiqueta y comportamiento consistente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Ejemplo de imagen con enlace externo -->
+      <div class="mt-8">
+        <img
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+          alt="Diagrama mostrando una interfaz de usuario consistente con navegación en la parte superior, contenido principal centrado y acciones claramente etiquetadas"
+          class="rounded-lg shadow-md border border-gray-200 dark:border-gray-700 w-full"
+          loading="lazy"
+        />
+        <p class="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">Ejemplo de diseño de interfaz predecible y consistente (Fuente: Unsplash)</p>
+      </div>
     </section>
+
+    <!-- Sección 3.3 Asistencia para Entrada de Datos con video tutorial -->
+    <section aria-labelledby="input-assistance" class="mb-12">
+      <h2 id="input-assistance" class="text-3xl font-bold mb-8 pb-2 border-b-2 border-indigo-200 dark:border-gray-700">
+        <span class="text-indigo-600 dark:text-indigo-400">3.3</span> Asistencia para Entrada de Datos
+      </h2>
+      
+      <p class="text-lg mb-6">Ayudar a los usuarios a evitar y corregir errores en formularios y entradas de datos.</p>
+      
+      <!-- Video tutorial de formularios accesibles -->
+      <div class="aspect-w-16 aspect-h-9 mb-8">
+        <iframe 
+          src="https://www.youtube.com/embed/videoseries?list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g" 
+          title="Tutorial de formularios accesibles" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+          class="w-full rounded-lg shadow-md"
+        ></iframe>
+      </div>
+      
+      <!-- Ejemplo de formulario accesible -->
+      <div class="bg-amber-50 dark:bg-amber-900/10 p-6 rounded-xl border border-amber-200 dark:border-amber-800">
+        <h3 class="text-xl font-semibold mb-4 text-amber-800 dark:text-amber-200">Formulario con asistencia:</h3>
+        
+        <form class="space-y-4">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Correo Electrónico</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+              aria-describedby="email-help"
+              required
+            >
+            <p id="email-help" class="mt-1 text-sm text-gray-500 dark:text-gray-400">Ejemplo: usuario@dominio.com</p>
+          </div>
+          
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Contraseña</label>
+            <input 
+              type="password" 
+              id="password" 
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+              aria-describedby="password-requirements"
+              minlength="8"
+              required
+            >
+            <div id="password-requirements" class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p>Requisitos:</p>
+              <ul class="list-disc pl-5">
+                <li>Mínimo 8 caracteres</li>
+                <li>Al menos un número</li>
+                <li>Al menos un carácter especial</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <input 
+              id="terms" 
+              type="checkbox" 
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-gray-600 rounded"
+              required
+            >
+            <label for="terms" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+              Acepto los <a href="/terminos" class="text-indigo-600 dark:text-indigo-400 hover:underline">Términos de Servicio</a>
+            </label>
+          </div>
+          
+          <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Registrarse
+          </button>
+        </form>
+      </div>
+      
+      <!-- Recursos adicionales -->
+      <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-4">Recursos adicionales:</h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://www.w3.org/WAI/tutorials/forms/" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center">
+              <span class="mr-2">📝</span>
+              <span>Guía completa de formularios accesibles del W3C</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://webaim.org/techniques/formvalidation/" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center">
+              <span class="mr-2">🔍</span>
+              <span>Técnicas de validación de formularios accesibles</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Script para el ejemplo interactivo -->
+    <script is:inline>
+      document.getElementById('unpredictable-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        const resultDiv = document.getElementById('unpredictable-result');
+        resultDiv.classList.toggle('hidden');
+        
+        // Scroll suave para usuarios de teclado
+        if (!resultDiv.classList.contains('hidden')) {
+          resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    </script>
   </article>
 </MainLayout>
+
+<style>
+  .aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  }
+  
+  .aspect-h-9 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

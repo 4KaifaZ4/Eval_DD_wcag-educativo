@@ -11,7 +11,7 @@ const { title, description } = Astro.props;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} | Accesibilidad For Dummies</title>
+  <title>{title} | Accesibilidad For Dummies DEV's</title>
   <meta name="description" content={description || "Guía simplificada de WCAG 2.0"} />
   
   <!-- Preconnect para fuentes accesibles -->
@@ -49,13 +49,13 @@ const { title, description } = Astro.props;
           <li><a href="https://www.nvaccess.org/" class="hover:underline">NVDA</a></li>
         </ul>
       </nav>
-      <p class="mt-8 text-sm">© {new Date().getFullYear()} Accesibilidad For Dummies</p>
+      <p class="mt-8 text-sm">© {new Date().getFullYear()} Accesibilidad For Dummies DEV's</p>
     </div>
   </footer>
 
   <script>
     // Detección del tema preferido del sistema
-    if (localStorage.getItem('theme') {
+    if (localStorage.getItem('theme')) {
       document.documentElement.classList.toggle('dark', localStorage.getItem('theme') === 'dark');
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
